@@ -3,7 +3,7 @@ package slackevents
 import (
 	"encoding/json"
 
-	"github.com/nlopes/slack"
+	"github.com/joez-tkpd/slack"
 )
 
 type MessageActionResponse struct {

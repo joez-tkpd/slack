@@ -8,7 +8,7 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"github.com/nlopes/slack"
+	"github.com/joez-tkpd/slack"
 )
 
 func newMessageChannels() *messageChannels {
