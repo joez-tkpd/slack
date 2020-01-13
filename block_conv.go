@@ -61,8 +61,7 @@ func (b *Blocks) UnmarshalJSON(data []byte) error {
 		case "section":
 			block = &SectionBlock{}
 		case "rich_text":
-			// for now ignore the (complex) content of rich_text blocks until we can fully support it
-			continue
+			block = new(RichTextBlock)
 		default:
 			return errors.New("unsupported block type")
 		}
@@ -129,6 +128,10 @@ func (b *BlockElements) UnmarshalJSON(data []byte) error {
 			blockElement = &DatePickerBlockElement{}
 		case "static_select", "external_select", "users_select", "conversations_select", "channels_select":
 			blockElement = &SelectBlockElement{}
+		case "text", "user", "broadcast":
+			blockElement = new(RichTextComponentBlockElement)
+		case "rich_text_section":
+			blockElement = new(RichTextSectionBlockElement)
 		default:
 			return errors.New("unsupported block element type")
 		}

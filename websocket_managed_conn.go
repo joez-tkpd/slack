@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	stdurl "net/url"
 	"reflect"
@@ -479,6 +480,7 @@ func (rtm *RTM) handleEvent(typeStr string, event json.RawMessage) {
 	recvEvent := reflect.New(t).Interface()
 	err := json.Unmarshal(event, recvEvent)
 	if err != nil {
+		log.Println(err)
 		rtm.Debugf("RTM Error, could not unmarshall event %q: %s\n", typeStr, string(event))
 		err := fmt.Errorf("RTM Error: Could not unmarshall event %q: %s", typeStr, string(event))
 		rtm.IncomingEvents <- RTMEvent{"unmarshalling_error", &UnmarshallingErrorEvent{err}}
