@@ -17,6 +17,8 @@ const (
 	MBTFile    MessageBlockType = "file"
 	MBTInput   MessageBlockType = "input"
 	MBTHeader  MessageBlockType = "header"
+
+	MBTRichText MessageBlockType = "rich_text"
 )
 
 // Block defines an interface all block types should implement

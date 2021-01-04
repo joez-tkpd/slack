@@ -65,6 +65,8 @@ func (b *Blocks) UnmarshalJSON(data []byte) error {
 			block = &InputBlock{}
 		case "section":
 			block = &SectionBlock{}
+		case "rich_text":
+			block = new(RichTextBlock)
 		default:
 			block = &UnknownBlock{}
 		}
@@ -185,6 +187,10 @@ func (b *BlockElements) UnmarshalJSON(data []byte) error {
 			blockElement = &RadioButtonsBlockElement{}
 		case "static_select", "external_select", "users_select", "conversations_select", "channels_select":
 			blockElement = &SelectBlockElement{}
+		case "text", "user", "broadcast":
+			blockElement = new(RichTextComponentBlockElement)
+		case "rich_text_section":
+			blockElement = new(RichTextSectionBlockElement)
 		default:
 			return fmt.Errorf("unsupported block element type %v", blockElementType)
 		}

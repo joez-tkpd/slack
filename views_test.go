@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/slack-go/slack/internal/errorsx"
+	"github.com/joez-tkpd/slack/internal/errorsx"
 	"github.com/stretchr/testify/assert"
 )
 
